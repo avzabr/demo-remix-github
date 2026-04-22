@@ -16,3 +16,12 @@ test:
   script:
     - npm ci
     - npm test
+
+ox_security_scan:
+  stage: test
+  image: oxsecurity/ox-block-mode:latest
+  variables:
+    OX_API_KEY: $OX_API_KEY
+  script:
+    - ox-block-mode
+  allow_failure: false
